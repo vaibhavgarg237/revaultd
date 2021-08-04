@@ -1,7 +1,5 @@
 use common::config::{config_folder_path, Config};
 
-mod commands;
-
 use std::{
     env,
     io::{Read, Write},
@@ -25,14 +23,6 @@ fn show_usage() {
 
 // Returns (Maybe(special conf file), Raw, Method name, Maybe(List of parameters))
 fn parse_args(mut args: Vec<String>) -> (Option<PathBuf>, bool, String, Vec<String>) {
-    
-    //"help" command shows API.md
-    for check_str in args.iter(){
-        if check_str.to_string() == "help" { 
-            commands::print_commands();
-        }
-    }
-    
     if args.len() < 2 {
         eprintln!("Not enough arguments.");
         show_usage();
